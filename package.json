@@ -1,0 +1,45 @@
+{
+	"name": "tw4-alpha-example",
+	"private": true,
+	"sideEffects": false,
+	"type": "module",
+	"scripts": {
+		"dev": "remix vite:dev",
+		"build": "remix vite:build",
+		"start": "remix-serve ./build/server/index.js",
+		"lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+		"typecheck": "tsc"
+	},
+	"dependencies": {
+		"@remix-run/node": "^2.8.1",
+		"@remix-run/react": "^2.8.1",
+		"@remix-run/serve": "^2.8.1",
+		"isbot": "^5.1.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@remix-run/dev": "^2.8.1",
+		"@tailwindcss/vite": "4.0.0-alpha.6",
+		"@types/react": "^18.2.64",
+		"@types/react-dom": "^18.2.21",
+		"@typescript-eslint/eslint-plugin": "^7.1.1",
+		"@typescript-eslint/parser": "^7.1.1",
+		"eslint": "^8.57.0",
+		"eslint-import-resolver-typescript": "^3.6.1",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-jsx-a11y": "^6.8.0",
+		"eslint-plugin-react": "^7.34.0",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"tailwindcss": "4.0.0-alpha.6",
+		"typescript": "^5.4.2",
+		"vite": "^5.1.5"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"volta": {
+		"node": "20.11.1"
+	},
+	"packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2"
+}
