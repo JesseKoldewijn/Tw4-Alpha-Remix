@@ -9,6 +9,7 @@ import {
 	useLoaderData,
 } from "@remix-run/react";
 import { cookieKeys, getTheme } from "~/config/cookies";
+import RootLayout from "~/layout/RootLayout";
 import "~/styles/tailwind.css";
 
 // loader to get theme cookie
@@ -49,7 +50,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Links />
 			</head>
 			<body>
-				{children}
+				<RootLayout initialTheme={data.themeObj.theme}>
+					{children}
+				</RootLayout>
 				<ScrollRestoration />
 				<Scripts />
 			</body>

@@ -1,32 +1,30 @@
-@import "tailwindcss";
-@import "tailwindcss/theme";
-@import "tailwindcss/utilities";
+@import "tailwindcss" layer(base);
+@import "tailwindcss/utilities" layer(utilities);
 
-@layer base {
-	:root {
-		--color-background: 0, 0%, 100%;
-		--color-foreground: 0, 0%, 5%;
-		--color-border: 0, 0%, 80%;
+@theme {
+	--color-background: 0, 0%, 100%;
+	--color-foreground: 0, 0%, 5%;
+	--color-border: 0, 0%, 80%;
 
-		color: hsl(var(--color-foreground));
-		background-color: hsl(var(--color-background));
+	--color-dark-background: 0, 0%, 5%;
+	--color-dark-foreground: 0, 0%, 100%;
+	--color-dark-border: 0, 0%, 80%;
+}
 
-		* {
-			border-color: hsl(var(--color-border));
-		}
+:root {
+	color: hsl(var(--color-foreground));
+	background-color: hsl(var(--color-background));
+
+	* {
+		border-color: hsl(var(--color-border));
 	}
-	.dark {
-		--color-background: 0, 0%, 5%;
-		--color-foreground: 0, 0%, 100%;
-		--color-border: 0, 0%, 80%;
+}
 
-		:root {
-			color: hsl(var(--color-foreground));
-			background-color: hsl(var(--color-background));
+.dark {
+	color: hsl(var(--color-dark-foreground));
+	background-color: hsl(var(--color-dark-background));
 
-			* {
-				border-color: hsl(var(--color-border));
-			}
-		}
+	* {
+		border-color: hsl(var(--color-dark-border));
 	}
 }

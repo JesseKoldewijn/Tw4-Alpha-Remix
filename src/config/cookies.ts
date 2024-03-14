@@ -1,9 +1,8 @@
+import { Theme } from "./themes";
+
 export const cookieKeys = {
 	theme: "tw4-alpha-theme",
 } as const;
-
-export const themes = ["light", "dark"] as const;
-export type Theme = (typeof themes)[number];
 
 export type validCookieKeys = (typeof cookieKeys)[keyof typeof cookieKeys];
 
