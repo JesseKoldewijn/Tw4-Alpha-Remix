@@ -9,8 +9,16 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
 	return (
-		<div className="font-sans px-4">
-			<h1>Welcome to TailwindCSS 4🔥</h1>
+		<div className="font-sans px-4 inset-0 flex min-h-screen items-center justify-center">
+			<section className="flex flex-col items-center justify-center gap-4">
+				<h1 className="font-semibold text-lg">
+					Welcome to TailwindCSS 4🔥
+				</h1>
+				<p className="opacity-80 text-center text-balance max-w-sm">{`
+				In this project, I'm experimenting with TailwindCSS's v4 
+				Alpha releases combined with Remix.js
+				`}</p>
+			</section>
 		</div>
 	);
 }

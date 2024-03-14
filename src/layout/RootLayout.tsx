@@ -11,7 +11,7 @@ const RootLayout = ({ initialTheme, children }: RootLayoutProps) => {
 	return (
 		<ThemeProvider initialTheme={initialTheme}>
 			<Navbar />
-			<main className="pt-20">{children}</main>
+			{children}
 		</ThemeProvider>
 	);
 };
