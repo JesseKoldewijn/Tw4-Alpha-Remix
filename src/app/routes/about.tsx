@@ -2,7 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
 	return [
-		{ title: "TailwindCSS v4 + Remix.js" },
+		{ title: "About - TailwindCSS v4 + Remix.js" },
 		{ name: "description", content: "Welcome to TailwindCSS v4!" },
 	];
 };
