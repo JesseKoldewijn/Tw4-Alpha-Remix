@@ -1,6 +1,7 @@
 import { useTheme } from "~/providers/ThemeProvider";
 import ThemeToggle from "../ThemeToggle";
 import { cn } from "~/utils/cn";
+import { LinkButton } from "../ui/Link";
 
 const Navbar = () => {
 	const { theme } = useTheme();
@@ -14,7 +15,11 @@ const Navbar = () => {
 				)}
 			></div>
 			<div>Remix TailwindCSS 4🔥</div>
-			<div className="flex items-center justify-center">
+			<div className="relative flex items-center justify-center gap-5">
+				<nav>
+					<LinkButton href="/">Home</LinkButton>
+					<LinkButton href="/about">About</LinkButton>
+				</nav>
 				<ThemeToggle />
 			</div>
 		</div>
