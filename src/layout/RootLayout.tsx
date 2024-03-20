@@ -10,8 +10,11 @@ type RootLayoutProps = {
 const RootLayout = ({ initialTheme, children }: RootLayoutProps) => {
 	return (
 		<ThemeProvider initialTheme={initialTheme}>
+			<a href="#main" className="sr-only">
+				Jump directly to main content
+			</a>
 			<Navbar />
-			{children}
+			<main id="main">{children}</main>
 		</ThemeProvider>
 	);
 };

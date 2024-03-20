@@ -1,4 +1,5 @@
 import { useTheme } from "~/providers/ThemeProvider";
+import Button from "./ui/Button";
 
 const ThemeToggle = () => {
 	const { toggleTheme } = useTheme();
@@ -8,12 +9,7 @@ const ThemeToggle = () => {
 	};
 
 	return (
-		<button
-			className="border-2 rounded-md cursor-pointer px-2 py-1"
-			onClick={() => void handleThemeToggle()}
-		>
-			ThemeToggle
-		</button>
+		<Button onClick={() => void handleThemeToggle()}>ThemeToggle</Button>
 	);
 };
 
