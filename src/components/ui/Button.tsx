@@ -1,10 +1,11 @@
 import { Slot } from "@radix-ui/react-slot";
+import { Button as AriaButton } from "react-aria-components";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "~/utils/cn";
 import React, { forwardRef } from "react";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring focus-visible:ring-ring focus-visible:ring-offset disabled:pointer-events-none disabled:opacity-50",
 	{
 		variants: {
 			variant: {
@@ -34,10 +35,17 @@ export interface ButtonProps
 	asChild?: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ButtonAriaInteropt = forwardRef<HTMLButtonElement, any>((props, ref) => {
+	const { onClick, ...rest } = props;
+	return <AriaButton ref={ref} onPress={onClick} {...rest} />;
+});
+ButtonAriaInteropt.displayName = "ButtonAriaInteropt";
+
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	({ className, variant, size, asChild, ...props }, ref) => {
 		// passing to child if prop asChild is true
-		const Comp = asChild ? Slot : "button";
+		const Comp = asChild ? Slot : ButtonAriaInteropt;
 
 		return (
 			<Comp
