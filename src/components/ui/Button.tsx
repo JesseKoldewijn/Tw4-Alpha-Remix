@@ -1,7 +1,7 @@
 import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
 import type React from "react";
-import { forwardRef, useRef } from "react";
+import { forwardRef } from "react";
 import { Button as AriaButton } from "react-aria-components";
 import { cn } from "~/utils/cn";
 
@@ -38,7 +38,9 @@ export interface ButtonProps
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ButtonAriaInteropt = forwardRef<HTMLButtonElement, any>((props, ref) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { onClick, ...rest } = props;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   return <AriaButton ref={ref} onPress={onClick} {...rest} />;
 });
 ButtonAriaInteropt.displayName = "ButtonAriaInteropt";

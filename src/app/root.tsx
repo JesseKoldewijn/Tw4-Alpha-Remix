@@ -12,6 +12,8 @@ import { cookieKeys, getTheme } from "~/config/cookies";
 import RootLayout from "~/layout/RootLayout";
 import "~/styles/tailwind.css";
 
+/* eslint-disable @typescript-eslint/require-await */
+
 // loader to get theme cookie
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const cookies = request.headers.get("Cookie");

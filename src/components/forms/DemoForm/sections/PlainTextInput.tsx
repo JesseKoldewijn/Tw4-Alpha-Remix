@@ -2,7 +2,7 @@ import TextField from "~/components/ui/TextField";
 
 const PlainTextInputGroup = () => {
   return (
-    <div className="form-group w-full flex flex-col gap-4">
+    <div className="form-group flex w-full flex-col gap-4">
       <TextField
         type="email"
         name="email"

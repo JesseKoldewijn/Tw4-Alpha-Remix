@@ -3,3 +3,10 @@
 
 @import "./light.css";
 @import "./dark.css";
+
+@layer base {
+  :root {
+    /** 1rem = 16px | important for responsive typography and a11y */
+    font-size: 16px;
+  }
+}

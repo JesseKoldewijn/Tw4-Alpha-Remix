@@ -6,7 +6,8 @@
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
     "**/.client/**/*.tsx",
-    "prettier.config.cjs"
+    "prettier.config.cjs",
+    ".eslintrc.cjs"
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],

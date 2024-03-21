@@ -9,7 +9,7 @@ export const switchTheme = () => {
     // get index of current theme
     const currentThemeIdx = themes.findIndex((t) => t === themeCookie);
     // get next theme
-    const newCookieTheme = themes.at(currentThemeIdx + 1) || themes.at(0)!;
+    const newCookieTheme = themes.at(currentThemeIdx + 1) ?? themes.at(0)!;
 
     cookies.set(cookieKeys.theme, newCookieTheme, {
       sameSite: "strict",

@@ -1,8 +1,9 @@
 import { forwardRef } from "react";
 import { Form, type FormProps } from "react-aria-components";
-import PlainTextInputGroup from "./sections/PlainTextInput";
 import Button from "~/components/ui/Button";
 import { cn } from "~/utils/cn";
+
+import PlainTextInputGroup from "./sections/PlainTextInput";
 
 const DemoForm = forwardRef<
   HTMLFormElement,
@@ -14,7 +15,7 @@ const DemoForm = forwardRef<
 
       <Button
         type="submit"
-        className="w-max max-w-md text-ellipsis text-nowrap whitespace-nowrap"
+        className="w-max max-w-md text-ellipsis whitespace-nowrap text-nowrap"
       >
         Signup
       </Button>

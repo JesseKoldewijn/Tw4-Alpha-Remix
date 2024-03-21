@@ -9,17 +9,17 @@ import { FieldError, Input, Label, Text } from "react-aria-components";
 import { cn } from "~/utils/cn";
 
 const textFieldVariants = cva(
-  "inline-flex flex-col [&>input]:px-2 cursor-pointer items-start gap-2 justify-center [&>label]:text-elipsis whitespace-nowrap [&>input]:rounded-md text-sm font-medium [&>input]:ring-offset-background transition-colors [&>input]:focus-visible:outline-none [&>input]:focus-visible:ring [&>input]:focus-visible:ring-ring [&>input]:focus-visible:ring-offset [&>input]:disabled:pointer-events-none [&>input]:disabled:opacity-50",
+  "inline-flex flex-col [&>input]:px-2 [&>input]:min-h-[40px] cursor-pointer items-start gap-2 justify-center [&>label]:text-elipsis whitespace-nowrap [&>input]:rounded-md text-sm font-medium [&>input]:ring-offset-background transition-colors [&>input]:focus-visible:outline-none [&>input]:focus-visible:ring [&>input]:focus-visible:ring-ring [&>input]:focus-visible:ring-offset [&>input]:disabled:pointer-events-none [&>input]:disabled:opacity-50",
   {
     variants: {
       variant: {
         default: cn(
           "[&>input]:border [&>input]:border-neutral-400 [&>input]:dark:border-neutral-600",
-          "[&>.react-aria-Text]:opacity-80 [&>.react-aria-Text]:italic",
+          "[&>.react-aria-Text]:italic [&>.react-aria-Text]:opacity-80",
         ),
         outline: cn(
-          "[&>input]:border [&>input]:border-neutral-400 [&>input]:hover:border-neutral-800 [&>input]:dark:border-neutral-600 [&>input]:bg-transparant [&>input]:dark:hover:border-neutral-950",
-          "[&>.react-aria-Text]:opacity-80 [&>.react-aria-Text]:italic",
+          "[&>input]:bg-transparant [&>input]:border [&>input]:border-neutral-400 [&>input]:hover:border-neutral-800 [&>input]:dark:border-neutral-600 [&>input]:dark:hover:border-neutral-950",
+          "[&>.react-aria-Text]:italic [&>.react-aria-Text]:opacity-80",
         ),
       },
       size: {

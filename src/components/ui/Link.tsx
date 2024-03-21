@@ -13,13 +13,14 @@ export type LinkProps = {
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ href, srDescription, children, ...rest }, ref) => {
     return (
-      <a href={href} {...rest}>
+      <a ref={ref} href={href} {...rest}>
         {srDescription && <span className="sr-only">{srDescription}</span>}
         {children}
       </a>
     );
   },
 );
+Link.displayName = "LinkComponent";
 
 export const LinkButton = forwardRef<
   HTMLButtonElement,
@@ -48,3 +49,4 @@ export const LinkButton = forwardRef<
     </Button>
   );
 });
+LinkButton.displayName = "LinkButtonComponent";

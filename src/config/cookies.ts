@@ -11,7 +11,7 @@ export function getTheme(cookies: string | null) {
     return cookie.includes(cookieKeys.theme);
   });
 
-  const themeCookieFound = themeCookie || `${cookieKeys.theme}=dark`;
+  const themeCookieFound = themeCookie ?? `${cookieKeys.theme}=dark`;
   const themeValue = themeCookieFound.split("=")[1] || "dark";
 
   return {

@@ -23,7 +23,7 @@ const FormPage = () => {
   const actionData = useActionData<typeof action>();
 
   return (
-    <div className="inset-0 flex flex-col gap-10 min-h-screen items-center justify-center px-4 font-sans">
+    <div className="inset-0 flex min-h-screen flex-col items-center justify-center gap-10 px-4 font-sans">
       <section className="flex flex-col items-center justify-center gap-4">
         <h1 className="text-lg font-semibold">Forms</h1>
         <p className="max-w-sm text-balance text-center opacity-80">
@@ -34,12 +34,12 @@ const FormPage = () => {
       </section>
 
       {actionData && (
-        <pre className="w-full max-w-md p-4 bg-contrast-5 rounded-md">
+        <pre className="bg-contrast-5 w-full max-w-md rounded-md p-4">
           {JSON.stringify(actionData, null, 2)}
         </pre>
       )}
 
-      <section className="flex flex-col items-center justify-center gap-4 w-full">
+      <section className="flex w-full flex-col items-center justify-center gap-4">
         <h1 className="text-lg font-semibold">Form (Simple)</h1>
         <DemoForm method="post" className="w-full max-w-md" />
       </section>

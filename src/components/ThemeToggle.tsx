@@ -1,18 +1,18 @@
+import { memo } from "react";
+import { LuMoon, LuSun } from "react-icons/lu";
 import { useTheme } from "~/providers/ThemeProvider";
 
 import Button from "./ui/Button";
-import { LuMoon, LuSun } from "react-icons/lu";
-import { memo } from "react";
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
 
-  const handleThemeToggle = async () => {
-    void toggleTheme();
+  const handleThemeToggle = () => {
+    toggleTheme();
   };
 
   return (
-    <Button onClick={() => void handleThemeToggle()} className="py-1 px-2">
+    <Button onClick={handleThemeToggle} className="py-1 px-2">
       <ThemeIcon theme={theme} />
     </Button>
   );
