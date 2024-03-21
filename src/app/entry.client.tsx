@@ -15,3 +15,14 @@ startTransition(() => {
     </StrictMode>,
   );
 });
+
+/**
+ * Wrapping the code below in this way to prevent
+ * it from being included in prod bundle
+ */
+if (process.env.NODE_ENV === "development") {
+  const asyncStartAxe = await import("~/utils/axe-a11y").then(
+    (mod) => mod.default,
+  );
+  void asyncStartAxe();
+}
