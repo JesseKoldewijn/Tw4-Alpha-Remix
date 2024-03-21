@@ -3,61 +3,61 @@ import { Theme, Themes, defaultTheme, themes } from "~/config/themes";
 import { switchTheme } from "~/utils/theme";
 
 type ThemeContextType = {
-	theme?: Theme;
-	availableThemes: Themes;
-	toggleTheme: () => void;
+  theme?: Theme;
+  availableThemes: Themes;
+  toggleTheme: () => void;
 };
 
 const themeContext = createContext<ThemeContextType>({
-	theme: defaultTheme,
-	availableThemes: themes,
-	toggleTheme: () => {},
+  theme: defaultTheme,
+  availableThemes: themes,
+  toggleTheme: () => {},
 });
 
 export const ThemeProvider = ({
-	initialTheme,
-	children,
+  initialTheme,
+  children,
 }: {
-	initialTheme: Theme;
-	children: React.ReactNode;
+  initialTheme: Theme;
+  children: React.ReactNode;
 }) => {
-	const [theme, setTheme] = useState<Theme>(initialTheme);
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
-	const setNewTheme = () => {
-		const newTheme = switchTheme();
+  const setNewTheme = () => {
+    const newTheme = switchTheme();
 
-		if (newTheme.error || !newTheme.theme) {
-			console.error(newTheme.error);
-			return;
-		}
+    if (newTheme.error || !newTheme.theme) {
+      console.error(newTheme.error);
+      return;
+    }
 
-		const h = document.querySelector("html");
+    const h = document.querySelector("html");
 
-		if (h && !newTheme.error && newTheme.theme) {
-			themes.flatMap((t) => h.classList.remove(t));
-			h.classList.add(newTheme.theme);
-		}
+    if (h && !newTheme.error && newTheme.theme) {
+      themes.flatMap((t) => h.classList.remove(t));
+      h.classList.add(newTheme.theme);
+    }
 
-		setTheme(newTheme.theme);
-	};
+    setTheme(newTheme.theme);
+  };
 
-	const value: ThemeContextType = {
-		theme,
-		availableThemes: themes,
-		toggleTheme: setNewTheme,
-	};
+  const value: ThemeContextType = {
+    theme,
+    availableThemes: themes,
+    toggleTheme: setNewTheme,
+  };
 
-	return (
-		<themeContext.Provider value={value}>{children}</themeContext.Provider>
-	);
+  return (
+    <themeContext.Provider value={value}>{children}</themeContext.Provider>
+  );
 };
 
 export function useTheme() {
-	const { theme, availableThemes, toggleTheme } = useContext(themeContext);
+  const { theme, availableThemes, toggleTheme } = useContext(themeContext);
 
-	if (!theme || !toggleTheme) {
-		throw new Error("useTheme must be used within a ThemeProvider");
-	}
+  if (!theme || !toggleTheme) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
 
-	return { theme, availableThemes, toggleTheme };
+  return { theme, availableThemes, toggleTheme };
 }

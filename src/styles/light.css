@@ -1,0 +1,14 @@
+@theme {
+  --color-background: hsl(0, 0%, 100%);
+  --color-foreground: hsl(0, 0%, 5%);
+  --color-border: hsl(0, 0%, 80%);
+}
+
+:root {
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+
+  * {
+    border-color: var(--color-border);
+  }
+}

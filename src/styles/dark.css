@@ -1,0 +1,14 @@
+@theme {
+  --color-dark-background: hsl(0, 0%, 5%);
+  --color-dark-foreground: hsl(0, 0%, 100%);
+  --color-dark-border: hsl(0, 0%, 80%);
+}
+
+.dark {
+  color: var(--color-dark-foreground);
+  background-color: var(--color-dark-background);
+
+  * {
+    border-color: var(--color-dark-border);
+  }
+}
