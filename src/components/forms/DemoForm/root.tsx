@@ -2,24 +2,21 @@ import { forwardRef } from "react";
 import { Form, type FormProps } from "react-aria-components";
 import PlainTextInputGroup from "./sections/PlainTextInput";
 import Button from "~/components/ui/Button";
+import { cn } from "~/utils/cn";
 
 const DemoForm = forwardRef<
   HTMLFormElement,
   FormProps & React.RefAttributes<HTMLFormElement>
 >(({ className, ...rest }, ref) => {
   return (
-    <Form
-      onSubmit={(e) => {
-        e.preventDefault();
-        console.log("Form submitted");
-      }}
-      ref={ref}
-      className={className}
-      {...rest}
-    >
+    <Form ref={ref} className={cn("flex flex-col gap-4", className)} {...rest}>
       <PlainTextInputGroup />
-      <Button type="submit" className="mt-4">
-        Submit
+
+      <Button
+        type="submit"
+        className="w-max max-w-md text-ellipsis text-nowrap whitespace-nowrap"
+      >
+        Signup
       </Button>
     </Form>
   );

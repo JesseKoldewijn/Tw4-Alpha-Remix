@@ -1,4 +1,5 @@
-import type { MetaFunction } from "@remix-run/node";
+import { type ActionFunctionArgs, type MetaFunction } from "@remix-run/node";
+import { useActionData } from "@remix-run/react";
 import DemoForm from "~/components/forms/DemoForm/root";
 
 export const meta: MetaFunction = () => {
@@ -8,7 +9,19 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export async function action({ request }: ActionFunctionArgs) {
+  const body = await request.formData();
+
+  return {
+    email: body.get("email"),
+    firstname: body.get("firstname"),
+    lastname: body.get("lastname"),
+  };
+}
+
 const FormPage = () => {
+  const actionData = useActionData<typeof action>();
+
   return (
     <div className="inset-0 flex flex-col gap-10 min-h-screen items-center justify-center px-4 font-sans">
       <section className="flex flex-col items-center justify-center gap-4">
@@ -19,9 +32,16 @@ const FormPage = () => {
           headless primitive components (ie. HeadlessUI, React-Aria and RadixUI)
         </p>
       </section>
+
+      {actionData && (
+        <pre className="w-full max-w-md p-4 bg-contrast-5 rounded-md">
+          {JSON.stringify(actionData, null, 2)}
+        </pre>
+      )}
+
       <section className="flex flex-col items-center justify-center gap-4 w-full">
         <h1 className="text-lg font-semibold">Form (Simple)</h1>
-        <DemoForm className="w-full max-w-md" />
+        <DemoForm method="post" className="w-full max-w-md" />
       </section>
     </div>
   );

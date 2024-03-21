@@ -43,11 +43,21 @@ interface TextFieldProps
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
+  placeholder?: string;
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
-    { label, description, errorMessage, className, variant, size, ...rest },
+    {
+      label,
+      description,
+      errorMessage,
+      placeholder,
+      className,
+      variant,
+      size,
+      ...rest
+    },
     ref,
   ) => {
     return (
@@ -57,9 +67,17 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {...rest}
       >
         <Label>{label}</Label>
-        <Input />
+        <Input placeholder={placeholder} />
         {description && <Text slot="description">{description}</Text>}
-        <FieldError>{errorMessage}</FieldError>
+        <FieldError>
+          {(err) => (
+            <FieldErrorDisplay
+              fieldName={rest.name}
+              errorMessage={errorMessage}
+              {...err}
+            />
+          )}
+        </FieldError>
       </TextFieldAria>
     );
   },
@@ -67,3 +85,20 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 TextField.displayName = "TextField";
 
 export default TextField;
+
+const FieldErrorDisplay = ({
+  fieldName,
+  validationDetails,
+  errorMessage,
+}: {
+  fieldName?: string;
+  errorMessage?: string | ((validation: ValidationResult) => string);
+} & ValidationResult) => {
+  if (!!errorMessage) return <>{errorMessage}</>;
+  if (validationDetails.valueMissing) {
+    return fieldName
+      ? `Please enter a ${fieldName}.`
+      : "Please fill out this field.";
+  }
+  return <></>;
+};
