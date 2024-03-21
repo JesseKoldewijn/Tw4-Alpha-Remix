@@ -1,11 +1,11 @@
 import Navbar from "~/components/navigation/Navbar";
-import { Theme } from "~/config/themes";
+import { type Theme } from "~/config/themes";
 import { ThemeProvider } from "~/providers/ThemeProvider";
 
-type RootLayoutProps = {
+interface RootLayoutProps {
   initialTheme: Theme;
   children: React.ReactNode;
-};
+}
 
 const RootLayout = ({ initialTheme, children }: RootLayoutProps) => {
   return (

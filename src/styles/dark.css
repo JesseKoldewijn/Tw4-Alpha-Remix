@@ -1,3 +1,6 @@
+@import "tailwindcss" layer(base);
+@import "tailwindcss/utilities" layer(utilities);
+
 @theme {
   --color-dark-background: hsl(0, 0%, 5%);
   --color-dark-foreground: hsl(0, 0%, 100%);

@@ -1,3 +1,6 @@
+@import "tailwindcss" layer(base);
+@import "tailwindcss/utilities" layer(utilities);
+
 @theme {
   --color-background: hsl(0, 0%, 100%);
   --color-foreground: hsl(0, 0%, 5%);

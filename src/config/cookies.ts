@@ -1,4 +1,4 @@
-import { Theme } from "./themes";
+import { type Theme } from "./themes";
 
 export const cookieKeys = {
   theme: "tw4-alpha-theme",

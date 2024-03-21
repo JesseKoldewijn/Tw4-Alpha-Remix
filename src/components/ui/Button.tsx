@@ -1,6 +1,7 @@
 import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
-import React, { forwardRef } from "react";
+import type React from "react";
+import { forwardRef, useRef } from "react";
 import { Button as AriaButton } from "react-aria-components";
 import { cn } from "~/utils/cn";
 

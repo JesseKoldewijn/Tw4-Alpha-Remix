@@ -1,16 +1,17 @@
 import { createContext, useContext, useState } from "react";
-import { Theme, Themes, defaultTheme, themes } from "~/config/themes";
+import { type Theme, type Themes, defaultTheme, themes } from "~/config/themes";
 import { switchTheme } from "~/utils/theme";
 
-type ThemeContextType = {
+interface ThemeContextType {
   theme?: Theme;
   availableThemes: Themes;
   toggleTheme: () => void;
-};
+}
 
 const themeContext = createContext<ThemeContextType>({
   theme: defaultTheme,
   availableThemes: themes,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleTheme: () => {},
 });
 
@@ -26,7 +27,7 @@ export const ThemeProvider = ({
   const setNewTheme = () => {
     const newTheme = switchTheme();
 
-    if (newTheme.error || !newTheme.theme) {
+    if (newTheme.error ?? !newTheme.theme) {
       console.error(newTheme.error);
       return;
     }

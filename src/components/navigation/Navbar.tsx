@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="relative flex items-center justify-center gap-5">
         <nav>
           <LinkButton href="/">Home</LinkButton>
-          <LinkButton href="/about">About</LinkButton>
+          <LinkButton href="/forms">Forms</LinkButton>
         </nav>
         <ThemeToggle />
       </div>
