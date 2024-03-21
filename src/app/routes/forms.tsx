@@ -3,7 +3,7 @@ import DemoForm from "~/components/forms/DemoForm/root";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "About - TailwindCSS v4 + Remix.js" },
+    { title: "Forms - TailwindCSS v4 + Remix.js" },
     { name: "description", content: "Welcome to TailwindCSS v4!" },
   ];
 };
