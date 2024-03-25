@@ -24,8 +24,8 @@ export const ThemeProvider = ({
 }) => {
   const [theme, setTheme] = useState<Theme>(initialTheme);
 
-  const setNewTheme = (themeOverride?: Theme) => {
-    const newTheme = switchTheme(themeOverride);
+  const setNewTheme = () => {
+    const newTheme = switchTheme();
 
     if (newTheme.error ?? !newTheme.theme) {
       console.error(newTheme.error);
