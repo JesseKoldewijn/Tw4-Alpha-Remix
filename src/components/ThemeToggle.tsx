@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { LuMoon, LuSun } from "react-icons/lu";
+import { LuMoon, LuStar, LuSun } from "react-icons/lu";
 import { useTheme } from "~/providers/ThemeProvider";
 
 import Button from "./ui/Button";
@@ -15,11 +15,11 @@ const Themes = [
     icon: <LuSun height={15} width={15} className="h-5 w-auto" />,
     label: "Switch from dark mode",
   },
-  // {
-  //   theme: "nightly",
-  //   icon: <LuStar height={15} width={15} className="h-5 w-auto" />,
-  //   label: "Switch to from nightly mode",
-  // },
+  {
+    theme: "nightly",
+    icon: <LuStar height={15} width={15} className="h-5 w-auto" />,
+    label: "Switch to from nightly mode",
+  },
 ];
 
 const ThemeToggle = () => {
