@@ -12,10 +12,7 @@ export const switchTheme = (themeOverride?: Theme) => {
     const newCookieTheme =
       themeOverride ?? themes.at(currentThemeIdx + 1) ?? themes.at(0)!;
 
-    cookies.set(cookieKeys.theme, newCookieTheme, {
-      sameSite: "strict",
-      domain: new URL(window.location.href).hostname,
-    });
+    cookies.set(cookieKeys.theme, newCookieTheme);
     return {
       success: true,
       theme: newCookieTheme,

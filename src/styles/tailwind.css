@@ -1,4 +1,5 @@
-@import "tailwindcss" layer(base);
+@import "tailwindcss";
+@import "tailwindcss/theme" layer(theme);
 @import "tailwindcss/utilities" layer(utilities);
 
 @theme {
@@ -26,5 +27,6 @@
   /** 1rem = 16px | important for responsive typography and a11y */
   font-size: 16px;
 
-  @apply bg-background text-foreground text-base leading-normal;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
