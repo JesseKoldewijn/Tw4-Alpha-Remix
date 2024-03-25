@@ -5,7 +5,7 @@ import { switchTheme } from "~/utils/theme";
 interface ThemeContextType {
   theme?: Theme;
   availableThemes: Themes;
-  toggleTheme: () => void;
+  toggleTheme: (themeOverride?: Theme) => void;
 }
 
 const themeContext = createContext<ThemeContextType>({
@@ -24,8 +24,8 @@ export const ThemeProvider = ({
 }) => {
   const [theme, setTheme] = useState<Theme>(initialTheme);
 
-  const setNewTheme = () => {
-    const newTheme = switchTheme();
+  const setNewTheme = (themeOverride?: Theme) => {
+    const newTheme = switchTheme(themeOverride);
 
     if (newTheme.error ?? !newTheme.theme) {
       console.error(newTheme.error);
@@ -35,8 +35,7 @@ export const ThemeProvider = ({
     const h = document.querySelector("html");
 
     if (h && !newTheme.error && newTheme.theme) {
-      themes.flatMap((t) => h.classList.remove(t));
-      h.classList.add(newTheme.theme);
+      h.dataset.theme = newTheme.theme;
     }
 
     setTheme(newTheme.theme);

@@ -1,15 +1,16 @@
 import cookies from "js-cookie";
 import { cookieKeys } from "~/config/cookies";
-import { themes } from "~/config/themes";
+import { type Theme, themes } from "~/config/themes";
 
-export const switchTheme = () => {
+export const switchTheme = (themeOverride?: Theme) => {
   try {
     const themeCookie = cookies.get(cookieKeys.theme);
 
     // get index of current theme
     const currentThemeIdx = themes.findIndex((t) => t === themeCookie);
     // get next theme
-    const newCookieTheme = themes.at(currentThemeIdx + 1) ?? themes.at(0)!;
+    const newCookieTheme =
+      themeOverride ?? themes.at(currentThemeIdx + 1) ?? themes.at(0)!;
 
     cookies.set(cookieKeys.theme, newCookieTheme, {
       sameSite: "strict",

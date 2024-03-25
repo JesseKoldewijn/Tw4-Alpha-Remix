@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
 const HomePage = () => {
   return (
     <div className="inset-0 flex min-h-screen items-center justify-center px-4 font-sans">
-      <section className="flex flex-col items-center justify-center gap-4">
+      <section className="border-accent flex flex-col items-center justify-center gap-4 border-b-2 pb-4">
         <h1 className="text-lg font-semibold">Welcome to TailwindCSS 4🔥</h1>
         <p className="max-w-sm text-balance text-center opacity-80">
           In this project, I&apos;m experimenting with TailwindCSS&apos;s v4
