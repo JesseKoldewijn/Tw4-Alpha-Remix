@@ -27,6 +27,15 @@
   /** 1rem = 16px | important for responsive typography and a11y */
   font-size: 16px;
 
+  /** 
+  * Variables seem to get applied as expected, 
+  * just not accessible using ie. text-background, text-foreground, etc.
+  *
+  * So comment this out to see that the variables color-background 
+  * & color-foreground are working as expected. But the classes referencing 
+  * the variables are not working as expected.
+  */
+
   background-color: var(--color-background);
   color: var(--color-foreground);
 }

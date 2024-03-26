@@ -1,3 +1,5 @@
+"use client";
+
 import { type VariantProps, cva } from "class-variance-authority";
 import { forwardRef } from "react";
 import {
@@ -6,6 +8,7 @@ import {
   type ValidationResult,
 } from "react-aria-components";
 import { FieldError, Input, Label, Text } from "react-aria-components";
+import { useTheme } from "~/providers/ThemeProvider";
 import { cn } from "~/utils/cn";
 
 const textFieldVariants = cva(
@@ -14,11 +17,11 @@ const textFieldVariants = cva(
     variants: {
       variant: {
         default: cn(
-          "[&>input]:border [&>input]:border-neutral-400 [&>input]:dark:border-neutral-600",
+          "[&>input]:border [&>input]:border-neutral-400 [&>input]:data-[theme=nightly]:border-neutral-600 [&>input]:data-[theme=dark]:border-neutral-600",
           "[&>.react-aria-Text]:italic [&>.react-aria-Text]:opacity-80",
         ),
         outline: cn(
-          "[&>input]:bg-transparant [&>input]:border [&>input]:border-neutral-400 [&>input]:hover:border-neutral-800 [&>input]:dark:border-neutral-600 [&>input]:dark:hover:border-neutral-950",
+          "[&>input]:bg-transparant [&>input]:border [&>input]:border-neutral-400 [&>input]:hover:border-neutral-800 [&>input]:data-[theme=nightly]:border-neutral-600 [&>input]:data-[theme=nightly]:hover:border-neutral-950 [&>input]:data-[theme=dark]:border-neutral-600 [&>input]:data-[theme=dark]:hover:border-neutral-950",
           "[&>.react-aria-Text]:italic [&>.react-aria-Text]:opacity-80",
         ),
       },
@@ -60,10 +63,12 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     },
     ref,
   ) => {
+    const { theme } = useTheme();
     return (
       <TextFieldAria
         ref={ref}
         className={cn(textFieldVariants({ variant, size, className }))}
+        data-theme={theme}
         {...rest}
       >
         <Label>{label}</Label>

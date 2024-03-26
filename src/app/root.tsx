@@ -40,8 +40,19 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
 
+  // bg-background text-foreground dont seem to get the valid values from the css themes
   return (
-    <html lang="en" data-theme={data ? data.themeObj.theme : "dark"}>
+    <html
+      lang="en"
+      data-theme={
+        data
+          ? data.themeObj.theme !== "light"
+            ? data.themeObj.theme
+            : undefined
+          : "dark"
+      }
+      className="bg-background text-foreground"
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
