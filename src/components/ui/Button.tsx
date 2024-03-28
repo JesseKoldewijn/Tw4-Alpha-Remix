@@ -14,7 +14,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "border-foreground/40 text-background data-[theme=dark]:border-foreground/60 data-[theme=nightly]:border-foreground/60 data-[theme=dark]:text-foreground data-[theme=nightly]:text-foreground data-[theme=nightly]:hover:text-foreground bg-foreground hover:bg-foreground/80 data-[theme=dark]:bg-background/80 data-[theme=nightly]:bg-accent/80 data-[theme=dark]:hover:bg-foreground/20 data-[theme=nightly]:hover:bg-foreground/20 border",
+          "border-foreground/40 text-background data-[theme=dark]:border-foreground/60 data-[theme=nightly]:border-foreground/60 data-[theme=dark]:text-foreground data-[theme=nightly]:hover:text-foreground bg-foreground hover:bg-foreground/80 data-[theme=dark]:bg-background/80 data-[theme=nightly]:bg-accent/80 data-[theme=dark]:hover:bg-foreground/20 data-[theme=nightly]:hover:bg-foreground/20 border data-[theme=nightly]:text-neutral-100",
         outline:
           "border-foreground/40 text-background hover:border-foreground/80 data-[theme=nightly]:border-foreground/60 data-[theme=nightly]:hover:border-background/95 data-[theme=dark]:border-foreground/60 data-[theme=dark]:hover:bg-foreground/20 bg-transparant border",
         link: "border-0 underline-offset-4 hover:underline",
