@@ -69,7 +69,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         <Label>{label}</Label>
         <Input placeholder={placeholder} />
         {description && <Text slot="description">{description}</Text>}
-        <FieldError>
+        <FieldError className="text-red-500 data-[theme=dark]:text-red-400 data-[theme=dark]:text-red-600">
           {(err) => (
             <FieldErrorDisplay
               fieldName={rest.name}
@@ -90,15 +90,29 @@ const FieldErrorDisplay = ({
   fieldName,
   validationDetails,
   errorMessage,
+  isInvalid,
+  validationErrors,
 }: {
   fieldName?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
 } & ValidationResult) => {
-  if (!!errorMessage) return <>{errorMessage}</>;
+  if (!!errorMessage && typeof errorMessage === "function") {
+    return (
+      <>{errorMessage({ validationDetails, isInvalid, validationErrors })}</>
+    );
+  }
+  if (!!errorMessage && typeof errorMessage === "string") {
+    return <>{errorMessage}</>;
+  }
   if (validationDetails.valueMissing) {
     return fieldName
       ? `Please enter a ${fieldName}.`
       : "Please fill out this field.";
   }
+
+  if (validationErrors?.length > 0) {
+    return <>{validationErrors.join(" ")}</>;
+  }
+
   return <></>;
 };

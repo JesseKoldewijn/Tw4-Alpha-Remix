@@ -26,7 +26,4 @@
 :root {
   /** 1rem = 16px | important for responsive typography and a11y */
   font-size: 16px;
-
-  background-color: var(--color-background);
-  color: var(--color-foreground);
 }
