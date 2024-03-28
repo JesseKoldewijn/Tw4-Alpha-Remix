@@ -48,6 +48,7 @@ interface TextFieldProps
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   placeholder?: string;
+  title?: string;
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
@@ -73,7 +74,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {...rest}
       >
         <Label>{label}</Label>
-        <Input placeholder={placeholder} />
+        <Input title={rest.title ?? rest.name} placeholder={placeholder} />
         {description && <Text slot="description">{description}</Text>}
         <FieldError className="react-aria-Error">
           {(err) => (
