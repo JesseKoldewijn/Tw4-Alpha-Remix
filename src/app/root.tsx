@@ -17,7 +17,6 @@ import "~/styles/tailwind.css";
 // loader to get theme cookie
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const cookies = request.headers.get("Cookie");
-
   const theme = getTheme(cookies);
 
   if (theme.isDefaulted) {
