@@ -1,7 +1,7 @@
 "use client";
 
 import { type VariantProps, cva } from "class-variance-authority";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import {
   TextField as TextFieldAria,
   type TextFieldProps as TextFieldAriaProps,
@@ -65,7 +65,46 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     },
     ref,
   ) => {
+    const elemRef = useRef<HTMLInputElement | null>(null);
+
     const { theme } = useTheme();
+
+    const getDescribeBy = () => {
+      const describeBy = elemRef.current?.getAttribute("aria-describedby");
+
+      if (describeBy) {
+        const describeByNames = describeBy.split(" ");
+        const findErrText = describeByNames.find((name) => {
+          const elem = document.getElementById(name);
+          return elem?.classList.contains("react-aria-Error");
+        });
+        return findErrText;
+      }
+      return undefined;
+    };
+
+    useEffect(() => {
+      const el = elemRef.current;
+
+      if (el) {
+        const blurHandler = () => {
+          const describeBy = getDescribeBy();
+          if (describeBy) {
+            elemRef.current?.setAttribute("aria-errormessage", describeBy);
+          }
+        };
+        el.addEventListener("focus", blurHandler);
+        el.addEventListener("change", blurHandler);
+
+        return () => {
+          if (el) {
+            el.removeEventListener("focusout", () => blurHandler);
+            el.removeEventListener("change", () => blurHandler);
+          }
+        };
+      }
+    }, []);
+
     return (
       <TextFieldAria
         ref={ref}
@@ -74,7 +113,12 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {...rest}
       >
         <Label>{label}</Label>
-        <Input title={rest.title ?? rest.name} placeholder={placeholder} />
+        <Input
+          ref={elemRef}
+          title={rest.title ?? rest.name}
+          placeholder={placeholder}
+          aria-errormessage={getDescribeBy()}
+        />
         {description && <Text slot="description">{description}</Text>}
         <FieldError className="react-aria-Error">
           {(err) => (
