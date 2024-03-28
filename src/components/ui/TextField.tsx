@@ -12,7 +12,7 @@ import { useTheme } from "~/providers/ThemeProvider";
 import { cn } from "~/utils/cn";
 
 const textFieldVariants = cva(
-  "inline-flex flex-col [&>input]:px-2 [&>input]:min-h-[40px] cursor-pointer items-start gap-2 justify-center [&>label]:text-elipsis whitespace-nowrap [&>input]:rounded-md text-sm font-medium [&>input]:ring-offset-background transition-colors [&>input]:focus-visible:outline-none [&>input]:focus-visible:ring [&>input]:focus-visible:ring-ring [&>input]:focus-visible:ring-offset [&>input]:disabled:pointer-events-none [&>input]:disabled:opacity-50",
+  "[&>label]:text-elipsis [&>input]:ring-offset-background [&>input]:focus-visible:ring-ring [&>input]:focus-visible:ring-offset inline-flex cursor-pointer flex-col items-start justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors [&>input]:min-h-[40px] [&>input]:rounded-md [&>input]:px-2 [&>input]:focus-visible:ring [&>input]:focus-visible:outline-none [&>input]:disabled:pointer-events-none [&>input]:disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -27,8 +27,8 @@ const textFieldVariants = cva(
         ),
       },
       size: {
-        default: "[&>input]:w-full w-full [&>label]:w-full",
-        full: "[&>input]:w-full w-full [&>label]:w-full",
+        default: "w-full [&>input]:w-full [&>label]:w-full",
+        full: "w-full [&>input]:w-full [&>label]:w-full",
         half: "w-1/2",
         quarter: "w-1/4",
         auto: "w-auto",
