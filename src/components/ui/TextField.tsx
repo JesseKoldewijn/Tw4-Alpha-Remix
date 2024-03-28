@@ -12,7 +12,7 @@ import { useTheme } from "~/providers/ThemeProvider";
 import { cn } from "~/utils/cn";
 
 const textFieldVariants = cva(
-  "[&>label]:text-elipsis [&>input]:ring-offset-background [&>input]:focus-visible:ring-ring [&>input]:focus-visible:ring-offset inline-flex cursor-pointer flex-col items-start justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors [&>input]:min-h-[40px] [&>input]:rounded-md [&>input]:px-2 [&>input]:focus-visible:ring [&>input]:focus-visible:outline-none [&>input]:disabled:pointer-events-none [&>input]:disabled:opacity-50",
+  "[&>label]:text-elipsis [&>input]:ring-offset-background [&>input]:focus-visible:ring-ring [&>input]:focus-visible:ring-offset inline-flex cursor-pointer flex-col items-start justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors transition-colors duration-200 ease-linear [&>input]:min-h-[40px] [&>input]:rounded-md [&>input]:px-2 [&>input]:focus-visible:ring [&>input]:focus-visible:outline-none [&>input]:disabled:pointer-events-none [&>input]:disabled:opacity-50",
   {
     variants: {
       variant: {
