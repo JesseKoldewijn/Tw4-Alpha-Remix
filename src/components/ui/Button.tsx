@@ -1,8 +1,11 @@
+"use client";
+
 import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
 import type React from "react";
 import { forwardRef } from "react";
 import { Button as AriaButton } from "react-aria-components";
+import { useTheme } from "~/providers/ThemeProvider";
 import { cn } from "~/utils/cn";
 
 const buttonVariants = cva(
@@ -11,9 +14,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "border border-neutral-400 dark:border-neutral-600 text-neutral-900 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700",
+          "border border-neutral-400 data-[theme=dark]:border-neutral-600 data-[theme=nightly]:border-neutral-600 text-neutral-900 data-[theme=dark]:text-neutral-100 data-[theme=nightly]:text-neutral-100 bg-neutral-100 data-[theme=nightly]:bg-neutral-800 data-[theme=dark]:bg-neutral-800 hover:bg-neutral-200 data-[theme=dark]:hover:bg-neutral-700 data-[theme=nightly]:hover:bg-neutral-700",
         outline:
-          "border border-neutral-400 hover:border-neutral-800 dark:border-neutral-600 bg-transparant dark:hover:border-neutral-950",
+          "border border-neutral-400 hover:border-neutral-800 data-[theme=nightly]:border-neutral-600 data-[theme=nightly]:hover:border-neutral-950 data-[theme=dark]:border-neutral-600 data-[theme=dark]:hover:border-neutral-950 bg-transparant",
         link: "underline-offset-4 hover:underline border-0",
       },
       size: {
@@ -50,10 +53,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // passing to child if prop asChild is true
     const Comp = asChild ? Slot : ButtonAriaInteropt;
 
+    const { theme } = useTheme();
+
     return (
       <Comp
         ref={ref}
         className={cn(buttonVariants({ variant, size, className }))}
+        data-theme={theme}
         {...props}
       />
     );
