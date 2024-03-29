@@ -55,6 +55,22 @@ const conf: UserConfig = {
         }
         handler(level, log);
       },
+      output: {
+        manualChunks(id: string) {
+          if (id.includes("radix")) {
+            return "radix";
+          }
+          if (id.includes("react-aria")) {
+            return "react-aria";
+          }
+          if (id.includes("react-dom") || id.includes("react-router")) {
+            return "react-dom";
+          }
+          if (id.includes("@remix-run") || id.includes("remix")) {
+            return "remix";
+          }
+        },
+      },
     },
   },
 };
