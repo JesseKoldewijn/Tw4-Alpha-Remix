@@ -33,7 +33,7 @@ export const LinkButton = forwardRef<
   (
     {
       srDescription,
-      variant,
+      variant = "link",
       className,
       href,
       showActive = true,
@@ -46,15 +46,17 @@ export const LinkButton = forwardRef<
     if (!href) return <></>;
 
     return (
-      <Button ref={ref} variant={variant ?? "link"} asChild>
+      <Button ref={ref} variant={variant} asChild>
         <Link
           href={href}
           className={cn(
             className,
-            showActive && MatchHref(href) && "underline underline-offset-2",
+            MatchHref(href, showActive) && "underline underline-offset-2",
           )}
           aria-current={
-            ariaCurrent ?? (showActive && MatchHref(href)) ? "page" : undefined
+            ariaCurrent ?? (showActive && MatchHref(href, showActive))
+              ? "page"
+              : undefined
           }
           srDescription={srDescription}
           {...rest}
@@ -78,8 +80,10 @@ LinkButton.displayName = "LinkButtonComponent";
  * function returns `true` if there is a match and `false` if there is no match or if the `href`
  * parameter is empty.
  */
-const MatchHref = (href: string) => {
+const MatchHref = (href: string, showActive?: boolean) => {
   const loc = useLocation();
+
+  if (!showActive) return false;
 
   if (!href) return false;
   const hrefIsPathname = href.startsWith("/");
@@ -101,7 +105,7 @@ const MatchHref = (href: string) => {
  * "sr-only".
  */
 const ActiveLinkSrLabel = ({ href }: { href: string }) => {
-  if (!MatchHref(href) || !href) return <></>;
+  if (!MatchHref(href, true) || !href) return <></>;
 
   return <span className="sr-only">This is the current page</span>;
 };
