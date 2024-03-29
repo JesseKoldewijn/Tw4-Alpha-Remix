@@ -1,3 +1,4 @@
+import { vercelPreset } from "@vercel/remix/vite";
 import legacy from "@vitejs/plugin-legacy";
 import { type UserConfig, defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
@@ -13,6 +14,7 @@ import { webmanifest } from "./src/config/webmanifest";
 installGlobals();
 
 const remixConfig: VitePluginConfig = {
+  presets: [vercelPreset()],
   // Remix config
   appDirectory: "src/app",
 };
