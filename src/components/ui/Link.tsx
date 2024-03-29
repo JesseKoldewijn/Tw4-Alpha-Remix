@@ -83,16 +83,12 @@ LinkButton.displayName = "LinkButtonComponent";
 const MatchHref = (href: string, showActive?: boolean) => {
   const loc = useLocation();
 
-  if (!showActive) return false;
+  if (!showActive || !href) return false;
 
-  if (!href) return false;
   const hrefIsPathname = href.startsWith("/");
+  if (hrefIsPathname) return loc.pathname === href;
 
-  if (hrefIsPathname) {
-    return loc.pathname === href;
-  } else {
-    return loc.href === href;
-  }
+  return loc.href === href;
 };
 
 /**
