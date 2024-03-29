@@ -40,6 +40,7 @@ const conf: UserConfig = {
     },
   },
   build: {
+    target: "es6",
     minify: "esbuild",
     rollupOptions: {
       onLog(level, log, handler) {
@@ -56,7 +57,7 @@ const conf: UserConfig = {
         handler(level, log);
       },
       output: {
-        manualChunks(id: string) {
+        manualChunks: (id: string) => {
           if (id.includes("radix")) {
             return "radix";
           }
