@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "remix vite:dev",
     "build": "remix vite:build",
-    "start": "remix-serve ./build/server/index.js",
+    "start": "remix-serve ./build/server/nodejs-*/index.js",
     "upgrade-tw": "pnpm install -D tailwindcss@next @tailwindcss/vite@next",
     "analyze": "vite-bundle-visualizer -o ./analyze/index.html && serve ./analyze",
     "format": "prettier --write .",
@@ -14,6 +14,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.10.1",
     "@radix-ui/react-slot": "^1.0.2",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",

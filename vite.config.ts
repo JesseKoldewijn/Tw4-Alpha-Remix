@@ -1,5 +1,4 @@
-import { vercelPreset } from "@vercel/remix/vite";
-import legacy from "@vitejs/plugin-legacy";
+import path from "path";
 import { type UserConfig, defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
@@ -9,6 +8,10 @@ import { installGlobals } from "@remix-run/node";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import { partytownVite } from "@builder.io/partytown/utils";
+import { vercelPreset } from "@vercel/remix/vite";
+import legacy from "@vitejs/plugin-legacy";
+
 import { webmanifest } from "./src/config/webmanifest";
 
 installGlobals();
@@ -17,6 +20,12 @@ const remixConfig: VitePluginConfig = {
   presets: [vercelPreset()],
   // Remix config
   appDirectory: "src/app",
+  // Experimental flags
+  future: {
+    v3_fetcherPersist: true,
+    v3_relativeSplatPath: true,
+    v3_throwAbortReason: true,
+  },
 };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
 const remixPlugin = remix(remixConfig) as any;
@@ -34,6 +43,9 @@ const conf: UserConfig = {
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
       },
       manifest: webmanifest,
+    }),
+    partytownVite({
+      dest: path.join(__dirname, "build/client", "~partytown"),
     }),
     remixPlugin,
     legacy({

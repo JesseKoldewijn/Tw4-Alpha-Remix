@@ -14,6 +14,8 @@ import {
   useLoaderData,
 } from "@remix-run/react";
 
+import { Partytown } from "@builder.io/partytown/react";
+
 /* eslint-disable @typescript-eslint/require-await */
 
 // loader to get theme cookie
@@ -43,6 +45,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   });
 };
 
+const gtagID = process.env.GA_ID;
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
 
@@ -61,6 +65,31 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Partytown debug={!import.meta.env.PROD} forward={["dataLayer.push"]} />
+        {
+          /* Google Analytics */
+          import.meta.env.PROD && (
+            <>
+              <script
+                type="text/partytown"
+                src={`https://www.googletagmanager.com/gtag/js?id=${gtagID}`}
+                defer
+              />
+              <script
+                type="text/partytown"
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${gtagID}');
+                    `,
+                }}
+                defer
+              />
+            </>
+          )
+        }
         <Meta />
         <Links />
       </head>
