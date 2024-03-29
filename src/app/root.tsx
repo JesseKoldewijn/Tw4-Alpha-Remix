@@ -1,3 +1,7 @@
+import { cookieKeys, getTheme } from "~/config/cookies";
+import RootLayout from "~/layout/RootLayout";
+import "~/styles/tailwind.css";
+
 import { type LoaderFunctionArgs } from "@remix-run/node";
 import {
   Links,
@@ -8,9 +12,6 @@ import {
   json,
   useLoaderData,
 } from "@remix-run/react";
-import { cookieKeys, getTheme } from "~/config/cookies";
-import RootLayout from "~/layout/RootLayout";
-import "~/styles/tailwind.css";
 
 /* eslint-disable @typescript-eslint/require-await */
 
