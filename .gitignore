@@ -1,7 +1,7 @@
-.achecker
-
-node_modules
-
+/node_modules
 /.cache
 /build
+
 .env
+
+analyze/*.html

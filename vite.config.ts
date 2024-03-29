@@ -40,6 +40,7 @@ const conf: UserConfig = {
     },
   },
   build: {
+    minify: "esbuild",
     rollupOptions: {
       onLog(level, log, handler) {
         // workaround for upstream rollup issue

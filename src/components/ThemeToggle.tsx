@@ -2,7 +2,7 @@ import { memo } from "react";
 import { LuMoon, LuStar, LuSun } from "react-icons/lu";
 import { useTheme } from "~/providers/ThemeProvider";
 
-import Button from "./ui/Button";
+import { Button } from "./ui/_helper";
 
 const Themes = [
   {

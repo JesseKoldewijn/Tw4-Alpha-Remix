@@ -7,9 +7,10 @@
     "dev": "remix vite:dev",
     "build": "remix vite:build",
     "start": "remix-serve ./build/server/index.js",
+    "upgrade-tw": "pnpm install -D tailwindcss@next @tailwindcss/vite@next",
+    "analyze": "vite-bundle-visualizer -o ./analyze/index.html && serve ./analyze",
     "format": "prettier --write .",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "upgrade-tw": "pnpm install -D tailwindcss@next @tailwindcss/vite@next",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -32,7 +33,7 @@
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.22",
+    "@types/react-dom": "^18.2.23",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "class-variance-authority": "^0.7.0",
@@ -45,10 +46,12 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.13",
+    "serve": "^14.2.1",
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "4.0.0-alpha.11",
     "typescript": "^5.4.3",
-    "vite": "^5.2.6",
+    "vite": "^5.2.7",
+    "vite-bundle-visualizer": "^1.1.0",
     "vite-plugin-pwa": "^0.19.7"
   },
   "volta": {

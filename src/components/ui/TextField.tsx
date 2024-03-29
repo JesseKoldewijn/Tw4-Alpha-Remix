@@ -17,12 +17,12 @@ const textFieldVariants = cva(
     variants: {
       variant: {
         default: cn(
-          "[&>input]:border [&>input]:border-neutral-400 [&>input]:data-[theme=nightly]:border-neutral-600 [&>input]:data-[theme=dark]:border-neutral-600",
+          "[&>input]:border [&>input]:border-neutral-400 [&>input]:data-[theme=dark]:border-neutral-600 [&>input]:data-[theme=nightly]:border-neutral-600",
           "[&>.react-aria-Text]:italic [&>.react-aria-Text]:opacity-90",
           "[&>.react-aria-Error]:text-red-500 [&>.react-aria-Error]:data-[theme=dark]:text-red-400 [&>.react-aria-Error]:data-[theme=dark]:text-red-600",
         ),
         outline: cn(
-          "[&>input]:bg-transparant [&>input]:border [&>input]:border-neutral-400 [&>input]:hover:border-neutral-800 [&>input]:data-[theme=nightly]:border-neutral-600 [&>input]:data-[theme=nightly]:hover:border-neutral-950 [&>input]:data-[theme=dark]:border-neutral-600 [&>input]:data-[theme=dark]:hover:border-neutral-950",
+          "[&>input]:bg-transparant [&>input]:border [&>input]:border-neutral-400 [&>input]:hover:border-neutral-800 [&>input]:data-[theme=dark]:border-neutral-600 [&>input]:data-[theme=dark]:hover:border-neutral-950 [&>input]:data-[theme=nightly]:border-neutral-600 [&>input]:data-[theme=nightly]:hover:border-neutral-950",
           "[&>.react-aria-Text]:italic [&>.react-aria-Text]:opacity-90",
         ),
       },
