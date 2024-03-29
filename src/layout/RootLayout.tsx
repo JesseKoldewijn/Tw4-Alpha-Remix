@@ -14,7 +14,7 @@ const RootLayout = ({ initialTheme, children }: RootLayoutProps) => {
         Jump directly to main content
       </a>
       <Navbar />
-      <main id="main" className="pt-32 pb-20 sm:pt-2 lg:pt-10">
+      <main id="main" className="py-4 pb-20">
         {children}
       </main>
     </ThemeProvider>

@@ -1,5 +1,6 @@
 import { cookieKeys, getTheme } from "~/config/cookies";
 import RootLayout from "~/layout/RootLayout";
+import { RouterProvider } from "~/providers/RouterProvider";
 import "~/styles/tailwind.css";
 
 import { type LoaderFunctionArgs } from "@remix-run/node";
@@ -34,11 +35,21 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     );
   }
 
-  return json({ themeObj: theme });
+  const pathName = request.url ? new URL(request.url).pathname : undefined;
+
+  return json({
+    pathName,
+    themeObj: theme,
+  });
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
+
+  // Remix.js doesnt propperly infer the type of the current loader
+  const typeOverrideData = data as unknown as {
+    pathName: string;
+  };
 
   // bg-background text-foreground dont seem to get the valid values from the css themes
   return (
@@ -54,7 +65,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <RootLayout initialTheme={data.themeObj.theme}>{children}</RootLayout>
+        <RouterProvider initialRoute={typeOverrideData.pathName}>
+          <RootLayout initialTheme={data.themeObj.theme}>{children}</RootLayout>
+        </RouterProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

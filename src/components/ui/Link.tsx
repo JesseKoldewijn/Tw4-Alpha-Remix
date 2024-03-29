@@ -1,4 +1,5 @@
-import { type DetailedHTMLProps, forwardRef, useEffect, useState } from "react";
+import { type DetailedHTMLProps, forwardRef } from "react";
+import { useLocation } from "~/providers/RouterProvider";
 import { cn } from "~/utils/cn";
 
 import Button, { type ButtonProps } from "./Button";
@@ -28,25 +29,37 @@ export const LinkButton = forwardRef<
     variant?: ButtonProps["variant"];
     showActive?: boolean;
   }
->(({ srDescription, variant, className, href, ...rest }, ref) => {
-  const [isActive, setIsActive] = useState(false);
+>(
+  (
+    { srDescription, variant, className, href, showActive = true, ...rest },
+    ref,
+  ) => {
+    const loc = useLocation();
 
-  useEffect(() => {
-    const handler = () => setIsActive(location.pathname === href);
-    handler();
-    window.addEventListener("popstate", handler);
-    return () => window.removeEventListener("popstate", handler);
-  }, [href]);
+    const matchHref = (href?: string) => {
+      if (!href) return false;
+      const hrefIsPathname = href.startsWith("/");
 
-  return (
-    <Button ref={ref} variant={variant ?? "link"} asChild>
-      <Link
-        href={href}
-        className={cn(className, isActive && "underline underline-offset-2")}
-        {...rest}
-        srDescription={srDescription}
-      />
-    </Button>
-  );
-});
+      if (hrefIsPathname) {
+        return loc.pathname === href;
+      } else {
+        return loc.href === href;
+      }
+    };
+
+    return (
+      <Button ref={ref} variant={variant ?? "link"} asChild>
+        <Link
+          href={href}
+          className={cn(
+            className,
+            showActive && matchHref(href) && "underline underline-offset-2",
+          )}
+          {...rest}
+          srDescription={srDescription}
+        />
+      </Button>
+    );
+  },
+);
 LinkButton.displayName = "LinkButtonComponent";

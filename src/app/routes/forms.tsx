@@ -1,6 +1,7 @@
+import DemoForm from "~/components/forms/DemoForm/root";
+
 import { type ActionFunctionArgs, type MetaFunction } from "@remix-run/node";
 import { useActionData } from "@remix-run/react";
-import DemoForm from "~/components/forms/DemoForm/root";
 
 export const meta: MetaFunction = () => {
   return [
@@ -23,7 +24,7 @@ const FormPage = () => {
   const actionData = useActionData<typeof action>();
 
   return (
-    <div className="inset-0 flex min-h-screen flex-col items-center justify-center gap-10 px-4 font-sans">
+    <div className="inset-0 flex min-h-screen flex-col items-center justify-center gap-10 pt-32 px-4 font-sans sm:pt-24 lg:pt-10">
       <section className="flex flex-col items-center justify-center gap-4">
         <h1 className="text-lg font-semibold">Forms</h1>
         <p className="max-w-sm text-balance text-center opacity-80">
