@@ -1,3 +1,4 @@
+import legacy from "@vitejs/plugin-legacy";
 import { type UserConfig, defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
@@ -33,6 +34,9 @@ const conf: UserConfig = {
       manifest: webmanifest,
     }),
     remixPlugin,
+    legacy({
+      targets: ["defaults", "not IE 11"],
+    }),
   ],
   resolve: {
     alias: {
@@ -40,7 +44,6 @@ const conf: UserConfig = {
     },
   },
   build: {
-    target: "es6",
     minify: "esbuild",
     rollupOptions: {
       onLog(level, log, handler) {
