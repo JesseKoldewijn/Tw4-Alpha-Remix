@@ -16,13 +16,16 @@ startTransition(() => {
   );
 });
 
-/**
- * Wrapping the code below in this way to prevent
- * it from being included in prod bundle
- */
-if (process.env.NODE_ENV === "development") {
-  const asyncStartAxe = await import("~/utils/axe-a11y").then(
-    (mod) => mod.default,
-  );
-  void asyncStartAxe();
-}
+const startAxe = async () => {
+  /**
+   * Wrapping the code below in this way to prevent
+   * it from being included in prod bundle
+   */
+  if (import.meta.env.NODE_ENV === "development") {
+    const asyncStartAxe = await import("~/utils/axe-a11y").then(
+      (mod) => mod.default,
+    );
+    void asyncStartAxe();
+  }
+};
+void startAxe();

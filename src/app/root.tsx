@@ -1,8 +1,4 @@
-import { cookieKeys, getTheme } from "~/config/cookies";
-import RootLayout from "~/layout/RootLayout";
-import { RouterProvider } from "~/providers/RouterProvider";
-import "~/styles/tailwind.css";
-
+import { Partytown } from "@builder.io/partytown/react";
 import { type LoaderFunctionArgs } from "@remix-run/node";
 import {
   Links,
@@ -13,8 +9,10 @@ import {
   json,
   useLoaderData,
 } from "@remix-run/react";
-
-import { Partytown } from "@builder.io/partytown/react";
+import { cookieKeys, getTheme } from "~/config/cookies";
+import RootLayout from "~/layout/RootLayout";
+import { RouterProvider } from "~/providers/RouterProvider";
+import "~/styles/tailwind.css";
 
 /* eslint-disable @typescript-eslint/require-await */
 
@@ -45,7 +43,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   });
 };
 
-const gtagID = process.env.GA_ID;
+const gtagID = import.meta.env.GA_ID as string;
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();

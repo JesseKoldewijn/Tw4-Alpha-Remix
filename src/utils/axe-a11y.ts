@@ -1,5 +1,5 @@
 const asyncStartAxe = async () => {
-  if (process.env.NODE_ENV === "production") return;
+  if (import.meta.env.PROD) return;
 
   // importing react to pass instance to Axe
   const react = await import("react");
