@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { Form, type FormProps } from "react-aria-components";
-import Button from "~/components/ui/Button";
+import { Button } from "~/components/ui/Button";
 import { cn } from "~/utils/cn";
 
 import PlainTextInputGroup from "./sections/PlainTextInput";

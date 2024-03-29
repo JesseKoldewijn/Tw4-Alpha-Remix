@@ -1,4 +1,4 @@
-import TextField from "~/components/ui/TextField";
+import { TextField } from "~/components/ui/TextField";
 
 const PlainTextInputGroup = () => {
   return (

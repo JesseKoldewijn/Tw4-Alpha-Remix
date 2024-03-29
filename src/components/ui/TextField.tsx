@@ -51,7 +51,7 @@ interface TextFieldProps
   title?: string;
 }
 
-const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
       label,
@@ -134,8 +134,6 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   },
 );
 TextField.displayName = "TextField";
-
-export default TextField;
 
 const FieldErrorDisplay = ({
   fieldName,

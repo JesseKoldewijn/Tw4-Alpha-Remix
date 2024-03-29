@@ -47,7 +47,7 @@ const ButtonAriaInteropt = forwardRef<HTMLButtonElement, any>((props, ref) => {
 });
 ButtonAriaInteropt.displayName = "ButtonAriaInteropt";
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild, ...props }, ref) => {
     // passing to child if prop asChild is true
     const Comp = asChild ? Slot : ButtonAriaInteropt;
@@ -65,5 +65,3 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 Button.displayName = "Button";
-
-export default Button;

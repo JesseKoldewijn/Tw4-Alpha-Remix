@@ -2,7 +2,7 @@ import { type DetailedHTMLProps, forwardRef } from "react";
 import { useLocation } from "~/providers/RouterProvider";
 import { cn } from "~/utils/cn";
 
-import Button, { type ButtonProps } from "./Button";
+import { Button, type ButtonProps } from "./Button";
 
 export type LinkProps = {
   srDescription?: string;
