@@ -69,6 +69,9 @@ const conf: UserConfig = {
           if (id.includes("@remix-run") || id.includes("remix")) {
             return "remix";
           }
+          if (id.includes("react-icons")) {
+            return "react-icons";
+          }
         },
       },
     },
