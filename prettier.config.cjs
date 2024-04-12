@@ -22,6 +22,5 @@ const config = {
   // Tailwind
   tailwindAttributes: ["className"],
   tailwindFunctions: ["clsx", "cn", "twMerge", "cva"],
-  tailwindConfig: "./tailwind.config.ts",
 };
 module.exports = config;
