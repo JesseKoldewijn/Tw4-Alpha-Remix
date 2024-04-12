@@ -24,7 +24,7 @@ const FormPage = () => {
   const actionData = useActionData<typeof action>();
 
   return (
-    <div className="inset-0 flex min-h-screen flex-col items-center justify-center gap-10 pt-32 px-4 font-sans sm:pt-24 lg:pt-10">
+    <div className="inset-0 flex min-h-screen flex-col items-center justify-center gap-10 px-4 pt-32 font-sans sm:pt-24 lg:pt-10">
       <section className="flex flex-col items-center justify-center gap-4">
         <h1 className="text-lg font-semibold">Forms</h1>
         <p className="max-w-sm text-balance text-center opacity-80">

@@ -16,7 +16,7 @@ const Navbar = () => {
       <div
         data-theme={theme}
         className={
-          "absolute inset-0 bg-neutral-100/25 opacity-80 blur-lg backdrop-blur-lg data-[theme=nightly]:bg-neutral-950/20 data-[theme=dark]:bg-neutral-950/25"
+          "absolute inset-0 bg-neutral-100/25 opacity-80 blur-lg backdrop-blur-lg data-[theme=dark]:bg-neutral-950/25 data-[theme=nightly]:bg-neutral-950/20"
         }
       ></div>
       <div className="z-10">Remix TailwindCSS 4🔥</div>
@@ -24,6 +24,7 @@ const Navbar = () => {
         <div className="hidden flex-row sm:flex">
           <LinkButton href="/">Home</LinkButton>
           <LinkButton href="/forms">Forms</LinkButton>
+          <LinkButton href="/animations">Animations</LinkButton>
         </div>
         <ThemeToggle />
       </div>

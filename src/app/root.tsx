@@ -1,4 +1,8 @@
-import { Partytown } from "@builder.io/partytown/react";
+import { cookieKeys, getTheme } from "~/config/cookies";
+import RootLayout from "~/layout/RootLayout";
+import { RouterProvider } from "~/providers/RouterProvider";
+import "~/styles/tailwind.css";
+
 import { type LoaderFunctionArgs } from "@remix-run/node";
 import {
   Links,
@@ -9,10 +13,8 @@ import {
   json,
   useLoaderData,
 } from "@remix-run/react";
-import { cookieKeys, getTheme } from "~/config/cookies";
-import RootLayout from "~/layout/RootLayout";
-import { RouterProvider } from "~/providers/RouterProvider";
-import "~/styles/tailwind.css";
+
+import { Partytown } from "@builder.io/partytown/react";
 
 /* eslint-disable @typescript-eslint/require-await */
 
@@ -47,11 +49,6 @@ const gtagID = import.meta.env.GA_ID as string;
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
-
-  // Remix.js doesnt propperly infer the type of the current loader
-  const typeOverrideData = data as unknown as {
-    pathName: string;
-  };
 
   // bg-background text-foreground dont seem to get the valid values from the css themes
   return (
@@ -92,9 +89,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <RouterProvider initialRoute={typeOverrideData.pathName}>
-          <RootLayout initialTheme={data.themeObj.theme}>{children}</RootLayout>
-        </RouterProvider>
+        {children}
+
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -103,7 +99,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function App() {
-  return <Outlet />;
+  const data = useLoaderData<typeof loader>();
+
+  // Remix.js doesnt propperly infer the type of the current loader
+  const typeOverrideData = data as unknown as {
+    pathName: string;
+  };
+
+  return (
+    <RouterProvider initialRoute={typeOverrideData?.pathName}>
+      <RootLayout initialTheme={data?.themeObj.theme ?? "dark"}>
+        <Outlet />
+      </RootLayout>
+    </RouterProvider>
+  );
 }
 
 export default App;

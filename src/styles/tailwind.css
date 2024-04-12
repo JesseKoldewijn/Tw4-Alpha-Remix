@@ -7,6 +7,13 @@
   --color-foreground: hsl(0, 0%, 5%);
   --color-border: hsl(0, 0%, 80%);
   --color-accent: hsl(171, 63%, 39%);
+
+  /** Custom animations */
+  --animation-first-move-vertical: moveVertical 30s ease infinite;
+  --animation-second-move-vertical: moveInCircle 20s reverse infinite;
+  --animation-third-move-vertical: moveInCircle 40s linear infinite;
+  --animation-fourth-move-vertical: moveHorizontal 40s ease infinite;
+  --animation-fifth-move-vertical: moveInCircle 20s ease infinite;
 }
 
 [data-theme="dark"] {
@@ -29,4 +36,40 @@
 
   background-color: var(--color-background);
   color: var(--color-foreground);
+}
+
+@keyframes moveHorizontal {
+  "0%": {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  "50%": {
+    transform: translateX(50%) translateY(10%);
+  }
+  "100%": {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+@keyframes moveInCircle {
+  "0%": {
+    transform: rotate(0deg);
+  }
+  "50%": {
+    transform: rotate(180deg);
+  }
+  "100%": {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  "0%": {
+    transform: translateY(-50%);
+  }
+  "50%": {
+    transform: translateY(50%);
+  }
+  "100%": {
+    transform: translateY(-50%);
+  }
 }
